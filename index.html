@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="一份为办公室午餐准备的个性化推荐。"><title>午间食单 · 今天午饭吃什么</title>
+<style>
+:root{color-scheme:light;--ink:#20332a;--muted:#526356;--green:#214c38;--paper:#f7f5ee;--card:#fffdf8;--line:#dcded3;--warm:#8a412d;--serif:"Songti SC","Noto Serif CJK SC","SimSun",serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 system-ui,sans-serif}a{color:inherit;text-decoration:none}button,select{font:inherit}button,summary,select{cursor:pointer}button{min-height:42px}button:disabled{cursor:default;opacity:.62}:focus-visible{outline:3px solid #a34e33;outline-offset:3px}[hidden]{display:none!important}
+.shell{width:min(1160px,calc(100% - 56px));margin:auto}.top{border-bottom:1px solid var(--line)}header{min-height:72px;display:flex;justify-content:space-between;align-items:center;gap:16px}.brand,.nav{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:38px;height:38px;background:var(--green);color:#fff;border-radius:50%;font-size:20px}.brand strong{display:block;font-size:17px;letter-spacing:.08em}.brand small{display:block;font-size:9px;letter-spacing:.18em}.nav a{padding:7px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px}.nav a:hover{background:#e9ede2}
+.mast{margin:28px 0 32px;display:grid;grid-template-columns:1fr 1fr;min-height:300px;border-radius:26px;overflow:hidden;background:#183b2d;color:#fffaf0}.mast-copy{padding:clamp(24px,4vw,55px);align-self:center}.eyebrow{font-size:11px;font-weight:750;letter-spacing:.15em;color:var(--muted)}.mast .eyebrow{color:#cfdbb8}.mast h1{font:700 clamp(36px,5vw,61px)/1.17 var(--serif);margin:15px 0}.mast p{margin:0;color:#e6ead8}.mast-art{margin:0;position:relative;min-height:220px;background:radial-gradient(circle at 57% 48%,#c57545 0 14%,#e7bb80 15% 24%,#ede4cc 25% 35%,#48614b 36% 38%,#203e30 39% 70%);background-image:url(lunch-editorial.webp);background-size:cover;background-position:center}.mast-art figcaption{position:absolute;bottom:14px;right:16px;border-radius:999px;background:#16251fe8;padding:3px 10px;font-size:11px;color:white}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,350px);gap:26px;align-items:start}.section-head{margin-bottom:14px}.section-head h2{font:700 30px/1.3 var(--serif);margin:2px 0}.section-head p,p{margin:0 0 8px}.muted,small{color:var(--muted)}.warn{color:var(--warm)}.notice{background:#f5e9dc;border-radius:11px;padding:9px 13px;margin:0 0 10px}.panel,.card,details{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;margin-bottom:12px}.panel h2{font-size:17px;margin:0 0 6px}.recommendations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:12px}.card{margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:5px}.card.hero,.card.empty{grid-column:1/-1}.card.hero{background:#e7eddf;border-color:#c8d5bf;padding:23px;box-shadow:0 8px 24px #24382a0c}.card h3{font:700 21px/1.3 var(--serif);margin:0}.hero h3{font-size:clamp(27px,4vw,37px)}.badge,.tag{display:inline-flex;align-items:center;border-radius:999px;font-size:12px;padding:3px 9px;background:#edf0e7}.badge{color:#425343;letter-spacing:.05em}.hero .badge{background:#25513b;color:white}.tag{background:#fffdf8;border:1px solid #d4ddcd}.row,.tags{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.tags{gap:5px;margin-bottom:4px}.card button{margin-top:auto}.card .ingredient{font-size:12px}
+button,select{color:var(--ink);background:var(--card);border:1px solid #a9b4a5;border-radius:10px;padding:7px 11px}button:hover:not(:disabled){background:#e7ede1}button.primary{background:var(--green);border-color:var(--green);color:white}button.primary:hover:not(:disabled){background:#173d2b}.controls{margin-bottom:17px}.record .panel{background:#f0ede2;margin-bottom:0}.record p{margin-bottom:4px}.record button{min-height:36px}fieldset{padding:10px 0;border:0;margin:0;min-width:0}legend{font-weight:700;padding:0}.checks{display:flex;flex-wrap:wrap;gap:6px}.checks label{display:flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:9px;padding:4px 7px;cursor:pointer;font-size:13px}.checks label:has(:checked){background:#e7eddf;border-color:#8aab87}.checks input{accent-color:var(--green);margin:0}.field{display:grid;gap:4px;margin:9px 0;font-size:13px;font-weight:650}.field select{width:100%;font-weight:400;min-height:42px}summary{font-weight:700}details[open] summary{margin-bottom:9px}.settings-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.hint{font-size:12px;margin:8px 0 0}.how{margin-top:14px}.how ol{padding-left:20px;margin:0}.how li+li{margin-top:5px}footer{margin-top:24px;border-top:1px solid var(--line);padding:16px 0 24px}
+@media(max-width:800px){.shell{width:calc(100% - 34px)}.grid{grid-template-columns:minmax(0,1fr) minmax(245px,290px);gap:14px}}@media(max-width:650px){header{min-height:62px}.grid{display:flex;flex-direction:column;gap:16px}.grid>section,.grid>aside{width:100%}.mast{grid-template-columns:1fr;margin:16px 0 22px;min-height:0}.mast-art{min-height:160px;order:2}.mast-copy{padding:20px 22px}.mast h1{font-size:36px;margin:9px 0}.recommendations{gap:8px}.card{padding:12px}.card.hero{padding:17px}.nav a{padding:4px 8px}.section-head h2{font-size:26px}}@media(max-width:360px){.recommendations{grid-template-columns:1fr}}
+
+/* The desk view gives each column a distinct job. */
+@media(min-width:801px){.shell{width:min(1420px,calc(100% - 72px))}.grid{grid-template-columns:minmax(0,1fr) minmax(310px,31%)}}
+.mast{margin-bottom:24px}
+.quick{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;margin-bottom:23px;background:#eeede4;border:1px solid var(--line);border-radius:15px}
+.quick strong{padding:0 6px;font-size:13px}
+.quick button{min-height:36px;border-radius:999px;padding:3px 12px;border-color:#bfc7b8;font-size:13px}
+.quick button[aria-pressed=true]{background:var(--green);color:white;border-color:var(--green)}
+.quick small{margin-left:auto;padding:0 6px}
+.recommendations .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0, min(29%, 190px));gap:12px;align-items:center}
+.dish-copy{display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-width:0}
+.dish-art{position:relative;overflow:hidden;margin:0;width:100%;max-width:190px;min-width:0;aspect-ratio:4/3;justify-self:end;border-radius:14px;background:#dbe5d1;border:1px solid #cdd9c3}
+.dish-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dish-art figcaption{position:absolute;right:7px;bottom:7px;background:#182b22e6;color:#fff;border-radius:999px;padding:3px 8px;font-size:11px}
+.record{margin-top:12px}.record .panel{background:#f0ede2}.record .panel p:first-child{font-family:var(--serif);font-size:19px}
+.daybook{border-radius:17px;background:#e6ecdf;border:1px solid #cad6c2;padding:15px 17px;margin:12px 0}.daybook h2{font:700 21px var(--serif);margin:0}.daybook #record{margin:10px 0}.daybook .record .panel{background:#fffdf7}.daybook #preview{width:100%}
+.notice button{min-height:34px;padding:3px 9px;margin-left:4px;font-size:13px}
+@media(max-width:650px){.quick{margin-bottom:16px}.quick small{margin-left:0;width:100%}.recommendations .hero{grid-template-columns:minmax(0,1fr) 106px}.dish-art figcaption{font-size:9px;padding:2px 4px;right:4px}}
+@media(max-width:370px){.recommendations .hero{grid-template-columns:1fr}.dish-art{max-width:100%;max-height:140px;aspect-ratio:2/1;grid-row:1;justify-self:stretch}}
+</style></head><body>
+<div class="top"><header class="shell"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">◒</span><span><strong>午间食单</strong><small>LUNCH EDIT</small></span></a><nav class="nav" aria-label="快捷入口"><a href="#recommendation">看推荐</a><a href="#preferences" id="prefsLink">设忌口</a></nav></header></div>
+<main class="shell" id="top">
+<section class="mast"><div class="mast-copy"><div class="eyebrow">LUNCH BREAK &nbsp; / &nbsp; 给办公室的一人食</div><h1>今天午饭<br>吃什么？</h1><p>选一道合口味的午餐，把午休留给自己。</p></div><figure class="mast-art" aria-label="午餐主题照片"><figcaption>午餐灵感 · 示意图</figcaption></figure></section>
+<section class="quick" id="quickTaste" aria-label="快捷口味"><strong>午餐灵感</strong><button data-taste="清淡" aria-pressed="false">清淡一点</button><button data-taste="微辣" aria-pressed="false">来点微辣</button><button data-taste="酸香" aria-pressed="false">酸香开胃</button><button data-taste="家常" aria-pressed="false">家常口味</button><small>点一下换口味，再点一次取消</small></section>
+<div class="grid">
+<section id="recommendation" aria-label="午餐推荐"><div class="section-head"><div class="eyebrow" id="date"></div><h2>你的午间食单</h2><p class="muted">一份首推，两份以内的备选。</p></div>
+<div id="result" aria-live="polite"></div><div class="row controls"><button id="next">换一个</button></div></section>
+<aside aria-label="推荐设置"><div class="panel" id="todayPanel"><div class="settings-heading"><h2>今天想吃</h2><span class="badge">仅今天</span></div><label class="field">口味<select id="taste"></select></label><label class="field">主食<select id="staple"></select></label><small>修改后，推荐会立即更新。</small></div>
+<details id="preferences"><summary>我的偏好与忌口</summary><p class="hint muted">鱼类含鲈鱼和鳕鱼，虾单列。忌口按模拟菜单标注的食材筛选。</p><fieldset><legend>不吃的食材</legend><div id="avoid" class="checks"></div></fieldset><label class="field">常吃口味<select id="usual"></select></label><fieldset><legend>烹饪和主食</legend><div id="flags" class="checks"></div></fieldset><button id="apply">完成设置</button></details>
+<details id="history"><summary>补记昨天</summary><label class="field">昨天的主菜<select id="yesterday"></select></label><small>更改后会立即更新今天的推荐。</small></details>
+<section class="daybook"><div class="eyebrow">LUNCH LOG</div><h2>午餐手账</h2><div id="record" class="record" aria-live="polite"></div><button id="preview">预览明天</button></section>
+<details class="how"><summary>推荐是怎么选的？</summary><ol><li>避开忌口和昨天记录的主菜。</li><li>优先满足已开启的少油、少炸偏好，再比较今日和常吃口味。</li><li>同一道主菜只展示一份，口味相近时优先推荐近期少吃的菜。</li></ol></details></aside></div>
+<footer><small>午间食单 · 20 道模拟午餐 · 偏好和记录保存在当前浏览器</small><p id="storage" class="warn" role="status"></p></footer></main>
+<script>
+const menu = [
+[1,1,'番茄牛腩饭','牛肉 番茄 洋葱','酸香 家常','低',false,'米饭'],
+[2,1,'番茄牛腩面','牛肉 番茄 洋葱 小麦','酸香 家常','低',false,'小麦面'],
+[3,2,'黑椒牛肉饭','牛肉 洋葱 彩椒 黑胡椒','家常','中',false,'米饭'],
+[4,3,'清蒸鲈鱼时蔬','鲈鱼 西兰花 姜','清淡','低',false,''],
+[5,3,'清蒸鲈鱼饭','鲈鱼 西兰花 姜','清淡','低',false,'米饭'],
+[6,4,'香菜鸡丝拌面','鸡肉 黄瓜 香菜 芝麻 小麦','清淡','低',false,'小麦面'],
+[7,5,'葱姜鸡腿饭','鸡肉 葱 姜','清淡 家常','低',false,'米饭'],
+[8,6,'微辣鸡排饭','鸡肉 生菜 小麦 辣椒','微辣','高',true,'米饭'],
+[9,7,'酸汤鱼片米线','鳕鱼 番茄 豆芽 辣椒 香菜','酸香 微辣','低',false,'米线'],
+[10,8,'姜丝鳕鱼米线','鳕鱼 姜 青菜','清淡','低',false,'米线'],
+[11,9,'香菇蒸鸡饭','鸡肉 香菇 葱','家常','低',false,'米饭'],
+[12,10,'麻婆豆腐饭','大豆 葱 蚕豆 小麦 辣椒','微辣','中',false,'米饭'],
+[13,11,'番茄豆腐饭','大豆 番茄 葱','酸香 家常','低',false,'米饭'],
+[14,12,'烤南瓜鹰嘴豆碗','南瓜 鹰嘴豆 生菜 柠檬','清淡','低',false,''],
+[15,13,'花生酱鸡肉荞麦面','鸡肉 黄瓜 花生 小麦 荞麦','家常','中',false,'荞麦面'],
+[16,14,'虾仁蒸蛋饭','虾 鸡蛋 葱','清淡','低',false,'米饭'],
+[17,15,'番茄炒蛋饭','鸡蛋 番茄 葱','酸香 家常','中',false,'米饭'],
+[18,16,'微辣烤鸡杂粮饭','鸡肉 西兰花 辣椒','微辣','低',false,'杂粮饭'],
+[19,17,'柠檬烤鸡沙拉','鸡肉 生菜 黄瓜 柠檬','清淡','低',false,''],
+[20,18,'糖醋炸鱼饭','鳕鱼 彩椒 小麦 醋','酸香','高',true,'米饭']
+].map(([id,main,name,food,tastes,oil,fried,staple])=>({id,main,name,food:food.split(' '),tastes:tastes.split(' '),oil,fried,staple,unknown:[]}));
+const defaults = {avoid:[],usual:'',low:true,lessFried:true,withStaple:true,noFried:false,configured:false};
+function recommend(data,p,t,yesterday,counts={}) {
+  const avoided = p.avoid.flatMap(x=>x==='鱼类'?['鲈鱼','鳕鱼']:x);
+  const filtered = data.filter(d=>!avoided.some(x=>d.food.includes(x)||d.unknown.includes(x)));
+  const cooking = filtered.filter(d=>!(p.noFried && d.fried));
+  const eligible = cooking.filter(d=>d.main!==yesterday);
+  const tier = d=>Number((p.low&&d.oil!=='低')||(p.lessFried&&d.fried));
+  const score = d=>[
+    tier(d),
+    -Number(d.tastes.includes(t.taste))-Number(Boolean(t.staple)&&d.staple===t.staple),
+    -Number(d.tastes.includes(p.usual)),
+    -Number(p.withStaple&&Boolean(d.staple)),
+    counts[d.main]||0,d.id
+  ];
+  const seen = new Set();
+  const ranked = eligible.sort((a,b)=>{
+    const aa=score(a), bb=score(b);
+    for(let i=0;i<aa.length;i++) if(aa[i]!==bb[i]) return aa[i]-bb[i];
+    return 0;
+  }).filter(d=>{
+    if(seen.has(d.main)) return false;
+    seen.add(d.main);
+    return true;
+  });
+  return {ranked,filtered,cooking,eligible,tier};
+}
+// UI
+const $ = id=>document.getElementById(id);
+const dateKey = offset=>{
+  const d=new Date(); d.setDate(d.getDate()+offset);
+  return [d.getFullYear(),d.getMonth()+1,d.getDate()].map(x=>String(x).padStart(2,'0')).join('-');
+};
+const key='lunch-pick-v2';
+let saved={};
+try{saved=JSON.parse(localStorage.getItem(key))||{}}catch{}
+const state={prefs:{...defaults,...saved.prefs},daily:saved.daily||{},records:saved.records||{}};
+let tomorrow=false,offset=0;
+const activeDay=dateKey(0);
+function save(){
+  try{localStorage.setItem(key,JSON.stringify(state))}catch{$('storage').textContent='浏览器暂时无法保存，刷新后本次设置可能丢失。'}
+}
+function options(values,placeholder){
+  return '<option value="">'+placeholder+'</option>'+values.map(x=>'<option>'+x+'</option>').join('');
+}
+const tastes=['清淡','家常','微辣','酸香'];
+$('taste').innerHTML=options(tastes,'随推荐');
+$('usual').innerHTML=options(tastes,'无固定口味');
+$('staple').innerHTML=options(['米饭','小麦面','米线','荞麦面','杂粮饭'],'随推荐');
+const foods=[...new Set(menu.flatMap(d=>d.food))].sort((a,b)=>a.localeCompare(b,'zh-CN'));
+$('avoid').innerHTML=['鱼类',...foods].map(x=>'<label><input type="checkbox" value="'+x+'">'+x+'</label>').join('');
+const flags={low:'偏好少油',lessFried:'偏好少炸',withStaple:'优先有主食',noFried:'不吃油炸'};
+$('flags').innerHTML=Object.entries(flags).map(([id,name])=>'<label><input type="checkbox" id="'+id+'">'+name+'</label>').join('');
+const mains=new Map();
+for(const d of menu) if(!mains.has(d.main)) mains.set(d.main,d.name.replace(/(?:时蔬|杂粮饭|饭)$/,''));
+$('yesterday').innerHTML='<option value="">暂无记录</option>'+[...mains].map(([id,name])=>'<option value="'+id+'">'+name+'</option>').join('');
+const checks=[...$('avoid').querySelectorAll('input')];
+checks.forEach(c=>c.checked=state.prefs.avoid.includes(c.value));
+Object.keys(flags).forEach(id=>$(id).checked=state.prefs[id]);
+$('usual').value=state.prefs.usual;
+$('taste').value=state.daily[activeDay]?.taste||'';
+$('staple').value=state.daily[activeDay]?.staple||'';
+function update(){offset=0;save();render()}
+$('preferences').addEventListener('change',()=>{
+  state.prefs={avoid:checks.filter(c=>c.checked).map(c=>c.value),usual:$('usual').value,configured:true,...Object.fromEntries(Object.keys(flags).map(id=>[id,$(id).checked]))};update();
+});
+$('prefsLink').onclick=()=>{$('preferences').open=true};
+$('result').addEventListener('click',e=>{
+  if(e.target.id==='setup'){
+    $('preferences').open=true;
+    $('preferences').querySelector('summary').focus();
+    $('preferences').scrollIntoView({block:'nearest'});
+  }
+});
+$('apply').onclick=()=>{state.prefs.configured=true;update();$('preferences').open=false};
+function saveTodayPreferences(){
+  state.daily[activeDay]={taste:$('taste').value,staple:$('staple').value};
+  update();
+}
+$('todayPanel').addEventListener('change',saveTodayPreferences);
+$('quickTaste').onclick=e=>{
+  const taste=e.target.dataset.taste;
+  if(!taste||tomorrow) return;
+  $('taste').value=$('taste').value===taste?'':taste;
+  saveTodayPreferences();
+};
+$('yesterday').onchange=()=>{
+  const day=dateKey(-1), main=Number($('yesterday').value);
+  if(main) state.records[day]={main}; else delete state.records[day];
+  update();
+};
+$('preview').onclick=()=>{tomorrow=!tomorrow;offset=0;render();$('recommendation').scrollIntoView({block:'start'})};
+$('next').onclick=()=>{offset++;render()};
+$('record').onclick=e=>{if(e.target.id==='undo'){delete state.records[activeDay];update()}};
+$('result').onclick=e=>{
+  const dish=menu.find(d=>d.id===Number(e.target.dataset.choose));
+  if(!dish||tomorrow) return;
+  state.records[activeDay]={main:dish.main,id:dish.id};update();
+};
+function dishArt(d){
+  const photos={'小麦面':'noodles','荞麦面':'noodles','米线':'rice-noodles'};
+  const photo=d.id===1?'beef-rice':photos[d.staple]||(d.staple?'rice':'salad');
+  return '<figure class="dish-art"><img src="lunch-'+photo+'.webp" alt=""><figcaption>午餐示意图</figcaption></figure>';
+}
+function render(){
+  if(dateKey(0)!==activeDay){location.reload();return}
+  const shift=Number(tomorrow), yesterday=state.records[dateKey(shift-1)], p=state.prefs;
+  const t=tomorrow?{}:state.daily[activeDay]||{};
+  const counts={};
+  for(let day=shift-7;day<shift;day++){
+    const entry=state.records[dateKey(day)];
+    if(entry) counts[entry.main]=(counts[entry.main]||0)+1;
+  }
+  const {ranked,filtered,cooking,tier}=recommend(menu,p,t,yesterday?.main,counts);
+  const today=state.records[activeDay];
+  $('date').textContent=(tomorrow?'次日预览':'今日推荐')+' · '+dateKey(shift);
+  $('todayPanel').hidden=tomorrow;
+  $('quickTaste').hidden=tomorrow;
+  $('quickTaste').querySelectorAll('button').forEach(button=>{
+    button.setAttribute('aria-pressed',String(button.dataset.taste===t.taste));
+  });
+  $('history').hidden=tomorrow;
+  $('yesterday').value=state.records[dateKey(-1)]?.main||'';
+  $('preview').textContent=tomorrow?'返回今天':'预览明天';
+  $('record').innerHTML='<div class="panel"><p><strong>'+ (tomorrow?'明日预览':today?'已记录今天的午餐':'午餐记录')+'</strong></p>'+
+    (!tomorrow&&today?'<div class="row"><span>'+menu.find(d=>d.id===today.id).name+'</span><button id="undo">撤销记录</button></div>':'')+
+    '<small>'+(yesterday?(tomorrow?'根据今天记录的午餐，明天避开同一道主菜。':'根据昨天记录的午餐，今天避开同一道主菜。'):(tomorrow?'今天暂无记录，明天暂未应用主菜避重。':'昨天暂无记录，可在「补记昨天」中补充。'))+'</small></div>';
+  const current=offset===0?ranked.slice(0,3):ranked.slice(offset+2,offset+3);
+  const notices=[];
+  if(!p.avoid.length) notices.push('尚未选择忌口食材。 <button id="setup">设置忌口</button>');
+  if(!ranked.length){
+    const reason=!filtered.length?'当前菜单没有符合食材忌口的午餐。':!cooking.length?'符合食材忌口的候选均为油炸菜。':'满足忌口和烹饪限制的主菜已在昨日记录中。';
+    notices.push(reason+' 可核对偏好或午餐记录。');
+  }else{
+    const top=current[0];
+    const missing=[t.taste&&!top.tastes.includes(t.taste)?t.taste:'',t.staple&&top.staple!==t.staple?t.staple:''].filter(Boolean);
+    if(missing.length) notices.push('当前推荐未匹配：'+missing.join('、')+'。');
+  }
+  $('result').innerHTML=notices.map(x=>'<div class="notice warn">'+x+'</div>').join('')+'<div class="recommendations">'+current.map((d,i)=>{
+    const matches=[];
+    if(d.tastes.includes(t.taste)) matches.push('符合今日口味');
+    if(t.staple&&d.staple===t.staple) matches.push('符合今日主食');
+    if(d.tastes.includes(p.usual)) matches.push('符合常吃口味');
+    const labels=[...matches,...d.tastes,d.oil==='低'?'少油':d.oil==='中'?'中油':'油量较高',d.fried?'油炸':'非油炸',d.staple||'无主食'];
+    const tags=labels.map(label=>'<span class="tag">'+label+'</span>').join('');
+    const chosen=today?.id===d.id;
+    return '<article class="card '+(i===0?'hero':'')+'"><div class="dish-copy"><span class="badge">'+(offset?'换一道':i?'备选 '+i:'今日首推').replace('今日',tomorrow?'次日':'今日')+
+      '</span><h3>'+d.name+'</h3><div class="tags">'+tags+'</div>'+(tier(d)?'<p class="warn">未满足'+[p.low&&d.oil!=='低'?'少油':'',p.lessFried&&d.fried?'少炸':''].filter(Boolean).join('、')+'偏好</p>':'')+
+      '<p class="ingredient"><small>食材标签 · '+d.food.join('、')+'</small></p>'+
+      (tomorrow?'':'<button class="primary" data-choose="'+d.id+'" '+(chosen?'disabled':'')+'>'+(chosen?'已记录':today?'改吃这个':'今天吃这个')+'</button>')+'</div>'+(i===0?dishArt(d):'')+'</article>';
+  }).join('')+(!ranked.length?'<div class="card empty"><h3>当前没有符合条件的午餐</h3><small>可查看上方原因，再核对设置或记录。</small></div>':'')+'</div>';
+  const exhausted=ranked.length<=Math.max(3,offset+3);
+  $('next').disabled=exhausted;
+  $('next').textContent=exhausted?(ranked.length?'符合条件的午餐已看完':'暂无可换菜品'):'换一个';
+}
+render();
+</script></body></html>
